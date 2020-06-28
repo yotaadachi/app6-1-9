@@ -10,8 +10,6 @@
                 <span>画像投稿フォーム</span>
               </h3>
             </div>
-
-            <!-- <form class="mt-20"> -->
             <%= form_for(@post_image, url: post_images_path) do |f| %>
               <% if @post_image.errors.any? %>
                 <div id="error_explanation">
@@ -48,7 +46,6 @@
               <hr>
               <%= f.submit "送信", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
               <% end %>
-            <!-- </form> -->
           </div>
         </div>
       </div>

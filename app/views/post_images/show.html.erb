@@ -34,13 +34,13 @@
                   <% end %>
                  </li>
              <% end %>
-              <li>
-                 <i class="fa fa-heart"></i>
-                 <a href="#">202 いいね</a>
-              </li>
-              <li>
                  <i class="fa fa-comment"></i>
                  <a href="#comments"><%= @post_image.post_comments.count %></a>
+              </li>
+              <li>
+                <% if @post_image.user == current_user %>
+                  <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+                  <% end %>
               </li>
              </ul>
              <div class="post-content-inner mt-20">
@@ -58,7 +58,7 @@
                      <div class="comment-body bb">
                         <div class="comment-avatar">
                           <div class="avatar">
-                             <%= image_tag('sample-author1.jpg', style: "width: 60px; height: 60px;") %>
+                             <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
                           </div>
                         </div>
                         <div class="comment-text">
@@ -76,7 +76,7 @@
                          <% end %>
                         </div>
                       </div>
-                </li>
+                  </li>
                <% end %>
               </ol>
           </div>
@@ -97,8 +97,6 @@
               </div>
               <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
               <% end %>
-          <!-- </form> -->
-
         </div>
       </div>
     </div>
